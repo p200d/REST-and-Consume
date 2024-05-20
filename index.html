@@ -6,14 +6,16 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Home</title>
         <link rel="stylesheet" href="style.css">
+        <script type="module" src="debounce.js"></script>
+        <script type="module" src="contactAPI.js"></script>
     </head>
     <body>
         <div class="rootContainer">
             <header>
-                <button>API 1</button>
-                <button>API 2</button>
-                <button>API 3</button>
-                <input type="text" maxlength="33"/>
+                <button class="btn" value="addresses">Get Addresses</button>
+                <button class="btn" value="companies">Get Companies</button>
+                <button class="btn" value="persons">Get Persons</button>
+                <input type="text" maxlength="33" placeholder="Enter a country here"/>
             <header>
 
             <main>
@@ -21,9 +23,9 @@
         </div>
 
         <footer>
-            <button>CLEAR</button>
+            <button class="btn" value="clear">CLEAR</button>
         </footer>
 
-        <script src="index.js"></script>
+        <script type="module" src="index.js"></script>
     </body>
 </html>
