@@ -32,7 +32,16 @@ input {
 }
 
 main {
-    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: stretch;
+}
+
+main > div {
+    padding: 10px;
+    background-color: grey;
+    border: 1px solid darkgrey;
 }
 
 footer {

@@ -1,5 +1,4 @@
 export const mutateData = (country, dataType, data) => {
-    console.log(`Country: ${country} | dataType: ${dataType}`);
     if (dataType === 'addresses')
         return handleAddresses(country, data);
     if (dataType === 'companies')
@@ -48,6 +47,4 @@ const handlePersons = (country, data) => {
         };
     })
     return personsArray;
-
-    // firstname, lastname, email, address.country
 }

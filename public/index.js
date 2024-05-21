@@ -4,14 +4,7 @@ import { mutateData } from './mutateData.js';
 
 const clearMainHTML = () => { setMainHTML('') };
 const setMainHTML = (htmlString) => { document.querySelector('main').innerHTML = htmlString; };
-const appendToMainHTML = (htmlString) => { document.querySelector('main').innerHTML += `<p>${htmlString}</p>` };
-const allKeyValuePairs = (obj) => {
-    let returnObj = {};
-    for(const [key, value] of Object.entries(obj)) {
-        returnObj = {...returnObj, [key]: value};
-    }
-    return returnObj;
-}
+const appendToMainHTML = (htmlString) => { document.querySelector('main').innerHTML += `<div>${htmlString}</div>` };
 
 const buttons = document.querySelectorAll('.btn');
 
@@ -27,13 +20,16 @@ function handleButtonClick() {
 
 async function handleAPICall(resource) {
     let countryName = document.querySelector('input').value;
+
     setMainHTML('Loading API resource...');
-    const response = await fetch(`https://fakerapi.it/api/v1/${resource}?_quantity=1000`);
-    const data = await response.json();
+    let data = await contactAPI(resource);
     const filteredData = await mutateData(countryName, resource, data.data);
-    console.log(filteredData);
-    setMainHTML(`API results for ${resource} in ${countryName}`);
-    filteredData.forEach((dataObj) => {
-        appendToMainHTML(JSON.stringify(allKeyValuePairs(dataObj)));
-    })
+    clearMainHTML();
+    if (filteredData.length == 0)
+        setMainHTML(`No ${resource} found for ${countryName}... Try again.`)
+    else {
+        filteredData.forEach((dataObj) => {
+            appendToMainHTML(JSON.stringify(dataObj));
+        })
+    }
 }
