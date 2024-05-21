@@ -1,2 +1,2 @@
 # REST-and-Consume
-Proof of concept REST API consumption and display
+REST API consumer and simple UI display. Used to test some flex mobile first, async, debounce and data mutation.
